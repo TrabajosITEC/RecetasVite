@@ -4,6 +4,7 @@ Segundo semestre 2024 | React Vite.
 
 ## Tabla de contenidos
 - [Crear proyecto con Vite](#crear-proyecto-con-vite)
+- [Instalar framework y otros elementos](#instalar-framework-y-otros-elementos)
 - [Subir proyecto a GIT](#subir-proyecto-a-git)
 
 ## *Crear proyecto con Vite*
@@ -45,6 +46,39 @@ npm install
 npm run dev
 ```
 El proyecto se inicia en localhost:5173
+
+## *Instalar framework y otros elementos*
+
+***Framework.***
+
+***
+Instalar Prime React
+```
+npm install primereact
+```
+Instalar iconos de Prime React
+```
+npm install primeicons     
+```
+Instalar estilos CSS de Prime Flex
+```
+npm install primeflex    
+```
+En la app de inicio, importar iconos y CSS.
+```
+import 'primeicons/primeicons.css';
+import 'primeflex/primeflex.css'; 
+```
+***Otras elementos utiles.***
+
+Enrutador para navegacion entre paginas
+```
+npm install react-router-dom
+```
+Validador de props
+```
+npm install prop-types
+```
 
 ## *Subir proyecto a GIT*
 ***
