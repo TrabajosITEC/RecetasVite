@@ -1,33 +1,63 @@
-import { useState } from 'react'
-import reactLogo from '../assets/react.svg'
-import viteLogo from '/vite.svg'
-import '../App.css'
+import { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { ModeContext } from '../contexts/MainContext'
+import { MainLayOut } from '../layouts/MainLayOut'
+import { Button } from 'primereact/button';
+import './index.css'
 
 function Home() {
-  const [count, setCount] = useState(0)
+  const navigate = useNavigate()
+  const handleReceta = () => {
+    navigate("/nuevaReceta")
+  }
+  const handleListaRecetas = () => {
+    navigate("/listaRecetas")
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <MainLayOut>
+      <h1 className="flex justify-content-center" style={{marginTop:'40px', marginBottom:'0px'}}>Recetario React</h1>
+      <div className="flex justify-content-center" style={{marginTop: '6rem'}}>
+        <div className='box flex align-items-center justify-content-center'>
+          <Button 
+            className='p-4 fadein animation-duration-500'
+            rounded 
+            severity="secondary" 
+            aria-label="Bookmark" 
+            label='Lista de Recetas'
+            onClick={handleListaRecetas} 
+            style={{
+              height: '20rem', 
+              width: '20rem', 
+              borderRadius: '50%',
+            }}
+            />
+        </div>
+
+        <div className='box flex align-items-center justify-content-center'>
+          <Button 
+            className='p-4 fadein animation-duration-500'
+            rounded 
+            severity="secondary" 
+            aria-label="Bookmark" 
+            label='Nueva Receta' 
+            onClick={handleReceta}
+            style={{
+              height: '20rem', 
+              width: '20rem', 
+              borderRadius: '50%',
+            }}
+            />
+        </div>
+
+
+       </div>
+        
+
+     
+
+      </MainLayOut>
     </>
   )
 }
