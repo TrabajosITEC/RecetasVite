@@ -1,13 +1,13 @@
-import { createContext, useState  } from "react";
+import { createContext } from "react";
 import PropTypes from 'prop-types';
 
 export const ModeContext = createContext()
 
 export const ModeProvider = ({children})=>{ 
-    const [prueba, setPrueba] = useState("Hola")
+    const recetas = JSON.parse(localStorage.getItem('listarecetas')) || [];
 
 
-    const data = { prueba, setPrueba };
+    const data = { recetas };
     return(
         <ModeContext.Provider value={data}>
             {children}
