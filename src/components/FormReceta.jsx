@@ -102,7 +102,7 @@ export default function FormReceta(){
             {Advertencia && <Message severity="warn" text="Deben estar todos los campos completos" />}
         </div>
         <div className="card flex flex-column justify-content-start mt-1 col-6 shadow-3">
-            <h3>Receta:{tituloConf}</h3>
+            <h3>Receta:  {tituloConf}</h3>
             <div className="flex flex-row align-items-center mb-5 ml-5 mt-3">
                 <DataTable value={receta} stripedRows tableStyle={{ minWidth: '40rem' }} emptyMessage="Sin ingredientes agregados" >
                     <Column field="cantidad" header="Cantidad"></Column>
