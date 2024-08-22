@@ -3,6 +3,7 @@ import Home from './Index';
 import NuevaReceta from '../pages/NuevaReceta';
 import ListaRecetas from '../pages/ListaRecetas';
 import Receta from '../pages/receta';
+import Logueo from '../pages/Logueo';
 
 function App() {
   
@@ -10,7 +11,7 @@ function App() {
     <>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Logueo/>} />
         <Route path="/nuevaReceta" element={<NuevaReceta/>} />
         <Route path="/listaRecetas" element={<ListaRecetas/>} />
         <Route path="/receta" element={<Receta/>} />
