@@ -1,6 +1,4 @@
-import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { ModeContext } from '../contexts/MainContext'
 import { MainLayOut } from '../layouts/MainLayOut'
 import { Button } from 'primereact/button';
 import './index.css'
@@ -15,10 +13,9 @@ function Home() {
   }
 
   return (
-    <>
       <MainLayOut>
-      <h1 className="flex justify-content-center" style={{marginTop:'40px', marginBottom:'0px'}}>Recetario React</h1>
-      <div className="flex justify-content-center" style={{marginTop: '6rem'}}>
+      <h1 className="flex justify-content-center" style={{ marginBottom:'0px'}}>Recetario React</h1>
+      <div className="flex justify-content-center" >
         <div className='box flex align-items-center justify-content-center'>
           <Button 
             className='p-4 fadein animation-duration-500'
@@ -50,15 +47,8 @@ function Home() {
             }}
             />
         </div>
-
-
        </div>
-        
-
-     
-
       </MainLayOut>
-    </>
   )
 }
 
