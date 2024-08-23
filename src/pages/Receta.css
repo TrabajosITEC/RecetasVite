@@ -1,0 +1,41 @@
+.receta-card {
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px; /* Radio de borde más grande para un look más suave */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más prominente */
+  background-color: rgb(255, 242, 165); /* Color de fondo suave */
+  max-width: 600px;
+  border: 1px solid #333; /* Borde más oscuro para contraste */
+}
+
+.receta-title {
+  font-size: 2.5rem; /* Título más grande para más énfasis */
+  color: #d32f2f; /* Color rojo intenso para el título */
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif; /* Fuente más legible */
+  font-weight: bold; /* Título en negrita */
+}
+
+.receta-ingredients {
+  list-style-type: none; /* Sin puntos en la lista */
+  padding: 0;
+}
+
+.receta-ingredient {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0; /* Mayor padding para separar mejor los elementos */
+  border-bottom: 1px solid #333; /* Línea divisoria más oscura */
+  font-family: 'Arial', sans-serif; /* Fuente más legible */
+}
+
+.receta-amount {
+  font-weight: bold;
+  color: #333; /* Color oscuro para buena legibilidad */
+}
+
+.receta-description {
+  font-weight: bold;
+  color: #d32f2f; /* Mismo color que el título para consistencia */
+}

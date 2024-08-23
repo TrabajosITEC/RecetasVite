@@ -15,8 +15,8 @@ export default function NavBar() {
     ];
 
     return (
-        <div className="card">
-            <Menubar style={{backgroundColor:'yellow'}} model={items} />
+        <div className="card" style={{marginTop:0}}>
+            <Menubar className='custom-menubar' model={items} />
         </div>
     )
 }

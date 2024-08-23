@@ -1,46 +1,32 @@
-// import { ModeContext } from "../contexts/MainContext";
-// import { useContext } from "react"
 import { DataView } from 'primereact/dataview';
-import  { useState, useEffect } from 'react';
-import { Button } from 'primereact/button';
-// import { Rating } from 'primereact/rating';
-// import { Tag } from 'primereact/tag';
-import { classNames } from 'primereact/utils';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Recipes.css';
 
 export default function BasicDemo() {
-    // const { recetas } = useContext(ModeContext);
     const recetas = JSON.parse(localStorage.getItem('listarecetas'));
     const [products, setProducts] = useState([]);
-    
+
     useEffect(() => {
-        setProducts(recetas)
+        setProducts(recetas);
     }, [recetas]);
 
     const navigate = useNavigate();
     const handleIngresarReceta = (product) => {
-        navigate("/receta", { state: { product } })
+        navigate("/receta", { state: { product } });
     }
 
-    const itemTemplate = (product, index) => {
+    const itemTemplate = (product) => {
         return (
-            <div className="col-12" key={product.id}>
-                <div className={classNames('flex flex-column xl:flex-row xl:align-items-start p-4 gap-4', { 'border-top-1 surface-border': index !== 0 })}>
-                   
-                    <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
-                        <div className="flex flex-column align-items-center sm:align-items-start gap-3">
-                            <div className="text-2xl font-bold text-900">{product.tituloConf}</div>
-                            
-                            <div className="flex align-items-center gap-3">
-                                <span className="flex align-items-center gap-2">
-                                    <i className="pi pi-tag"></i>
-                                    <span className="font-semibold">Total de ingredientes: {product.receta.length}</span>
-                                </span>
-                            </div>
-                        </div>
-                        <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-                            <Button icon="pi pi-plus" severity="success" label="Ingresar" onClick={()=>handleIngresarReceta(product)} ></Button>
-                        </div>
+            <div className="recipe-card" key={product.id}>
+                <button className="custom-button" onClick={() => handleIngresarReceta(product)}>
+                    <i className="pi pi-external-link"></i>
+                    Ingresar
+                </button>
+                <div className="recipe-card-content">
+                    <div className="recipe-card-title">{product.tituloConf}</div>
+                    <div className="recipe-card-info">
+                        <span>Total de ingredientes: {product.receta.length}</span>
                     </div>
                 </div>
             </div>
@@ -50,18 +36,16 @@ export default function BasicDemo() {
     const listTemplate = (items) => {
         if (!items || items.length === 0) return null;
 
-        let list = items.map((product, index) => {
-            return itemTemplate(product, index);
-        });
-
-        return <div className="grid grid-nogutter">{list}</div>;
+        return (
+            <div className="recipe-grid">
+                {items.map((product) => itemTemplate(product))}
+            </div>
+        );
     };
 
     return (
-        <div className="card">
-            <DataView value={products} listTemplate={listTemplate} />
+        <div>
+            <DataView value={products} listTemplate={listTemplate} layout={'grid'} />
         </div>
-    )
+    );
 }
-         
-

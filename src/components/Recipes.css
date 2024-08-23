@@ -1,0 +1,193 @@
+
+.recipe-card {
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 242, 165);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
+  padding: 20px;
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid #333; 
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.custom-button {
+  position: absolute;
+  top: 10px; 
+  left: 10px; 
+  background-color: orangered;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1; 
+}
+
+.custom-button i {
+  margin-right: 6px;
+}
+
+.custom-button:hover {
+  background-color: orange;
+  transform: scale(1.05);
+}
+
+.recipe-card-content {
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  border-top: 1px solid orangered;
+}
+
+.recipe-card-title {
+  font-size: 1.2rem;
+  color: #d32f2f;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.recipe-card-info {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 10px;
+}
+
+.recipe-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.form-receta-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.form-receta-card {
+  background-color: rgb(255, 242, 165);;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  border: 1px solid #dcdcdc;
+}
+
+.form-receta-card h3 {
+  font-size: 1.5rem;
+  color: #d32f2f;
+  margin-bottom: 20px;
+}
+
+.form-receta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-receta-button {
+  width: 200px;
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.form-receta-button.success {
+  background-color: #388e3c;
+}
+
+.form-receta-button:hover {
+  background-color: #e64a19;
+  transform: scale(1.05);
+}
+
+.form-receta-button.success:hover {
+  background-color: #2e7d32;
+}
+
+.form-receta-warning {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.form-receta-table {
+  margin-bottom: 20px;
+}
+
+.form-receta-table .p-datatable {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-receta-table .p-column-header {
+  font-weight: bold;
+  color: #333;
+  background-color: #f7f7f7;
+}
+
+.form-receta-table .p-row {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+
+/* Anula el fondo que podría estar aplicando DataView */
+.p-dataview {
+  background-color: transparent !important; /* Asegura que el fondo sea transparente */
+}
+
+.p-dataview-content {
+  background-color: transparent !important; /* Asegura que el fondo sea transparente */
+}
+
+.custom-menubar {
+  background-color: orangered !important;
+  border-radius: 8px !important;
+  padding: 10px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-menubar .p-menuitem-text {
+  color: white !important;
+}
+
+.custom-menubar .p-menuitem-icon {
+  color: white !important;
+}
+
+.custom-menubar .p-menuitem-link:hover .p-menuitem-text,
+.custom-menubar .p-menuitem-link:hover .p-menuitem-icon {
+    color: orangered !important;
+}

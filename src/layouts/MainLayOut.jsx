@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 export const MainLayOut = ({children})=>{
 
   return (
-    <div>
-        <NavBar></NavBar>
-        <main>
+    <div className="flex flex-column min-h-screen">
+        <NavBar />
+        <main style={{ flexGrow: 1 }}>
             {children}
         </main>
     </div>
