@@ -3,7 +3,7 @@ import Home from './Index';
 import NuevaReceta from '../pages/NuevaReceta';
 import ListaRecetas from '../pages/ListaRecetas';
 import Receta from '../pages/Receta';
-import Logueo from '../pages/Logueo';
+import Register from '../pages/Register';
 
 function App() {
   
@@ -11,7 +11,7 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Logueo/>} />
+        <Route path="/register" element={<Register/>} />
         <Route path="/" element={<Home/>} />
         <Route path="/nuevaReceta" element={<NuevaReceta/>} />
         <Route path="/listaRecetas" element={<ListaRecetas/>} />
