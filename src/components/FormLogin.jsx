@@ -10,7 +10,7 @@ import { Card } from 'primereact/card';
 import { Divider } from 'primereact/divider';
 import * as Yup from 'yup';
 
-export default function FormRegister() {
+export default function FormLogin() {
     const { userActive, setUserActive, usuariosRegistrados } = useContext(ModeContext);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -19,69 +19,52 @@ export default function FormRegister() {
         userName: Yup.string()
             .required('Debe ingresar un nombre de usuario')
             .test(
-                'len',
-                'El nombre de usuario debe tener entre 3 y 15 caracteres (sin contar espacios)',
-                function (value) {
-                    if (!value) return false;
-                    const trimmedValue = value.replace(/\s+/g, '');
-                    return trimmedValue.length >= 3 && trimmedValue.length <= 15;
-                }
-            )
-            .test(
                 'checkUser',
-                'El nombre de usuario ya se encuentra registrado',
+                'El nombre de usuario no existe',
                 function(value) {
                     const ListadoUsuarios = usuariosRegistrados.map( usuario => usuario.user);
                     if (ListadoUsuarios.includes(value)){
-                        return false
-                    } else {
+                        setUserActive(value)
                         return true
+                    } else {
+                        return false
                     }           
                 }
             ),
         passWord: Yup.string()
-            .matches(
-                /^(?=.*[A-Z])(?=.*\d).{1,8}$/,
-                'La contraseña debe tener al menos una mayúscula, al menos un número y como máximo 8 caracteres'
-            )
-            .required('La contraseña es obligatoria'),
-        email: Yup.string().email('Correo electrónico inválido')
-            .required('Requerido')
+            .required('La contraseña es obligatoria')
             .test(
-                'checkMail',
-                'El correo electronico esta vinculado a otro usuario',
+                'checkPassword',
+                'La contraseña es incorrecta',
                 function(value) {
-                    const ListadoUsuarios = usuariosRegistrados.map( usuario => usuario.email);
-                    if (ListadoUsuarios.includes(value)){
+                    const usuario = usuariosRegistrados.find(usuario => usuario.user === userActive)
+                    if (!usuario){
                         return false
-                    } else {
+                    }
+                    else if (value === usuario.password){
                         return true
-                    }           
+                    } else  {
+                        return false
+                    }
                 }
             ),
+
     });
 
     return (
         <div className="flex justify-content-center align-items-center min-h-screen bg-blue-50">
             <Card className="w-full md:w-30rem shadow-8">
-                <h1 className="text-center text-primary mb-4">Formulario de Registro</h1>
+                <h1 className="text-center text-primary mb-4">Iniciar Sesión</h1>
                 <Divider className="mb-4" />
                 <Formik
-                    initialValues={{
-                        userName: '',
-                        passWord: '',
-                        email: '',
-                    }}
+                    initialValues={{ userName: '', passWord: '' }}
                     validationSchema={SignupSchema}
                     onSubmit={(values, { setSubmitting }) => {
                         setLoading(true);
                         setTimeout(() => {
                             setLoading(false);
                             setSubmitting(false);                
-                            const nuevoUsuario = [...usuariosRegistrados, {user: values.userName, password: values.passWord, email: values.email }];
-                            localStorage.setItem('listausuarios', JSON.stringify(nuevoUsuario));
-                            setUserActive(values.userName);
-                            navigate("/home",  { state: { userActive } });
+                            navigate("/home", { state: { userActive } });
                         }, 2000);
                     }}
                 >
@@ -110,44 +93,29 @@ export default function FormRegister() {
                                         onBlur={handleBlur}
                                         toggleMask
                                         className={errors.passWord && touched.passWord ? 'p-invalid w-full' : 'w-full'}
-                                        feedback={true}
-                                        promptLabel = "Ingrese una contraseña"
-                                        strongLabel = "Seguridad Fuerte"
-                                        mediumLabel = "Seguridad Media"
-                                        weakLabel = "Seguridad Baja"
+                                        feedback={false}
                                     />
                                     <label htmlFor="passWord">Contraseña</label>
                                 </span>
                                 {errors.passWord && touched.passWord && <Message severity="error" text={errors.passWord} />}
 
-                                <span className="p-float-label">
-                                    <InputText
-                                        id="email"
-                                        name="email"
-                                        type="email"
-                                        value={values.email}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        className={errors.email && touched.email ? 'p-invalid w-full' : 'w-full'}
+                                <div className='flex justify-content-between align-items-center mt-4'>
+                                    <Button
+                                        severity="primary"
+                                        type='submit'
+                                        label="Iniciar Sesión"
+                                        icon="pi pi-sign-in"
+                                        loading={loading || isSubmitting}
+                                        onClick={handleSubmit} 
+                                        className="w-full md:w-auto"
                                     />
-                                    <label htmlFor="email">Correo Electrónico</label>
-                                </span>
-                                {errors.email && touched.email && <Message severity="error" text={errors.email} />}
-
-                                <Button
-                                    type='submit'
-                                    label="Registrarse"
-                                    icon="pi pi-user-plus"
-                                    loading={loading || isSubmitting}
-                                    onClick={handleSubmit}
-                                    className="w-full mt-4"
-                                />
-                                <Button
-                                    label="Volver a inicio"
-                                    icon="pi pi-home"
-                                    onClick={() => navigate("/")}
-                                    className="p-button-outlined w-full md:w-auto mt-2 md:mt-0"
-                                />
+                                    <Button
+                                        label="Registrarse"
+                                        icon="pi pi-user-plus"
+                                        onClick={() => {navigate("/register")}}
+                                        className="p-button-outlined w-full md:w-auto mt-2 md:mt-0"
+                                    />
+                                </div>
                             </div>
                         </Form>
                     )}

@@ -4,6 +4,7 @@ import NuevaReceta from '../pages/NuevaReceta';
 import ListaRecetas from '../pages/ListaRecetas';
 import Receta from '../pages/Receta';
 import Register from '../pages/Register';
+import Login from '../pages/Login';
 
 function App() {
   
@@ -11,8 +12,9 @@ function App() {
 
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/" element={<Home/>} />
+        <Route path="/home" element={<Home/>} />
         <Route path="/nuevaReceta" element={<NuevaReceta/>} />
         <Route path="/listaRecetas" element={<ListaRecetas/>} />
         <Route path="/receta" element={<Receta/>} />

@@ -6,9 +6,10 @@ export const ModeContext = createContext()
 
 export const ModeProvider = ({children})=>{ 
     const recetas = JSON.parse(localStorage.getItem('listarecetas')) || [];
+    const usuariosRegistrados = JSON.parse(localStorage.getItem('listausuarios')) || [];
     const [userActive, setUserActive] = useState("")
 
-    const data = { recetas, userActive, setUserActive };
+    const data = { recetas, userActive, setUserActive, usuariosRegistrados };
     return(
         <ModeContext.Provider value={data}>
             {children}
