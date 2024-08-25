@@ -11,7 +11,8 @@ import { Divider } from 'primereact/divider';
 import * as Yup from 'yup';
 
 export default function FormLogin() {
-    const { userActive, setUserActive, usuariosRegistrados } = useContext(ModeContext);
+    const { userActive, setUserActive } = useContext(ModeContext);
+    const usuariosRegistrados = JSON.parse(localStorage.getItem('listausuarios')) || [];
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
@@ -63,7 +64,8 @@ export default function FormLogin() {
                         setLoading(true);
                         setTimeout(() => {
                             setLoading(false);
-                            setSubmitting(false);                
+                            setSubmitting(false);  
+                            setUserActive(values.userName)              
                             navigate("/home", { state: { userActive } });
                         }, 2000);
                     }}

@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 export const ModeContext = createContext()
 
 export const ModeProvider = ({children})=>{ 
-    const recetas = JSON.parse(localStorage.getItem('listarecetas')) || [];
-    const usuariosRegistrados = JSON.parse(localStorage.getItem('listausuarios')) || [];
+
     const [userActive, setUserActive] = useState("")
 
-    const data = { recetas, userActive, setUserActive, usuariosRegistrados };
+    const data = {  userActive, setUserActive };
     return(
         <ModeContext.Provider value={data}>
             {children}

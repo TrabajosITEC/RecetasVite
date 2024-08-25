@@ -1,15 +1,16 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect} from "react";
 import { AutoComplete } from "primereact/autocomplete";
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { Dropdown } from 'primereact/dropdown';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { ModeContext } from "../contexts/MainContext";
 import { useNavigate } from 'react-router-dom';
 
 export default function FormReceta() {
-    const { recetas } = useContext(ModeContext);
+    const recetas = JSON.parse(localStorage.getItem('listarecetas')) || [];
+    console.log(`Soy el receta que viene del contexto en FormRecetaa `)
+    console.log(recetas)
     const navigate = useNavigate();
     const [titulo, setTitulo] = useState("");
     const [tituloConf, setTituloConf] = useState("");

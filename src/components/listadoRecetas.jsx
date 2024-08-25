@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import './Recipes.css';
 
 export default function BasicDemo() {
-    const recetas = JSON.parse(localStorage.getItem('listarecetas'));
     const [products, setProducts] = useState([]);
-
+    
     useEffect(() => {
+        const recetas = JSON.parse(localStorage.getItem('listarecetas'));
         setProducts(recetas);
-    }, [recetas]);
+    }, []);
 
     const navigate = useNavigate();
     const handleIngresarReceta = (product) => {
@@ -35,10 +35,14 @@ export default function BasicDemo() {
 
     const listTemplate = (items) => {
         if (!items || items.length === 0) return null;
-
+    
         return (
             <div className="recipe-grid">
-                {items.map((product) => itemTemplate(product))}
+                {items.map((product) => (
+                    <div key={product.id}>
+                        {itemTemplate(product)}
+                    </div>
+                ))}
             </div>
         );
     };

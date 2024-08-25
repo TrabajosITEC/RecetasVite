@@ -11,7 +11,8 @@ import { Divider } from 'primereact/divider';
 import * as Yup from 'yup';
 
 export default function FormRegister() {
-    const { userActive, setUserActive, usuariosRegistrados } = useContext(ModeContext);
+    const { userActive, setUserActive} = useContext(ModeContext);
+    const usuariosRegistrados = JSON.parse(localStorage.getItem('listausuarios')) || [];
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
