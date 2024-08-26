@@ -43,8 +43,8 @@ export default function NavBar() {
     ];
 
     const endItems =
-    <div>
-        <div className='flex flex-row'>
+    <div className='flex flex-row' >
+        
             <Avatar 
             icon="pi pi-user" 
             size="large" 
@@ -53,7 +53,7 @@ export default function NavBar() {
             />
             <p style={{color:'#FFFFFF', marginLeft:'10px'}}>{userActive}</p>
 
-        </div>
+        
 
         <Button 
         label="Cerrar Sesion" 
