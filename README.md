@@ -69,6 +69,11 @@ En la app de inicio, importar iconos y CSS.
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css'; 
 ```
+Definir un tema por defecto
+```
+import "primereact/resources/themes/tailwind-light/theme.css";
+```
+
 ***Otras elementos utiles.***
 
 Enrutador para navegacion entre paginas
@@ -78,6 +83,15 @@ npm install react-router-dom
 Validador de props
 ```
 npm install prop-types
+```
+Libreria "Formik" para creacion y validacion de formularios
+```
+npm install formik --save
+```
+Libreria "Yup" para creacion de esquemas de validacion de datos ingresados en formularios.
+(Se usa en conjunto con Formik)
+```
+npm i yup
 ```
 
 ## *Subir proyecto a GIT*
@@ -127,4 +141,3 @@ git commit -m "Resto carpetas"
 ```
 git push origin main
 ```
-prueba

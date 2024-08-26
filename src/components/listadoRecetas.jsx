@@ -1,20 +1,21 @@
 import { DataView } from 'primereact/dataview';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ModeContext } from "../contexts/MainContext";
 import './Recipes.css';
 
 export default function BasicDemo() {
     const [products, setProducts] = useState([]);
-    
-    useEffect(() => {
-        const recetas = JSON.parse(localStorage.getItem('listarecetas'));
-        setProducts(recetas);
-    }, []);
-
+    const { recetas} = useContext(ModeContext);
     const navigate = useNavigate();
     const handleIngresarReceta = (product) => {
-        navigate("/receta", { state: { product } });
+        navigate(`/receta/${product.idName}`);
     }
+    
+    useEffect(() => {
+        setProducts(recetas);
+    }, [recetas]);
+
 
     const itemTemplate = (product) => {
         return (
@@ -38,8 +39,8 @@ export default function BasicDemo() {
     
         return (
             <div className="recipe-grid">
-                {items.map((product) => (
-                    <div key={product.id}>
+                {items.map((product, index) => (
+                    <div key={index}>
                         {itemTemplate(product)}
                     </div>
                 ))}

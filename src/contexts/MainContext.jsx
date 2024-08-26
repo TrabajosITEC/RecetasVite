@@ -1,14 +1,20 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { createContext } from "react";
 import PropTypes from 'prop-types';
 
 export const ModeContext = createContext()
 
 export const ModeProvider = ({children})=>{ 
+    const [recetas, setRecetas] = useState("")
+    
+    useEffect(() => {
+        setRecetas(JSON.parse(localStorage.getItem('listarecetas')) || []);
+    }, []);
+
 
     const [userActive, setUserActive] = useState("")
 
-    const data = {  userActive, setUserActive };
+    const data = {  userActive, setUserActive, recetas, setRecetas };
     return(
         <ModeContext.Provider value={data}>
             {children}

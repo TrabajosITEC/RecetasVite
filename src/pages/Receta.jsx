@@ -1,19 +1,26 @@
-// import { useContext } from "react";
-// import { ModeContext } from "../contexts/MainContext";
+import { useContext } from "react";
+import { ModeContext } from "../contexts/MainContext";
 import { MainLayOut } from "../layouts/MainLayOut";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { Button } from 'primereact/button';
+import { useParams } from 'react-router-dom';
 import './Receta.css';
 
 export default function Receta() {
-  const recetas = JSON.parse(localStorage.getItem('listarecetas'));
+  const { recetas, setRecetas} = useContext(ModeContext);
+  // const recetas = JSON.parse(localStorage.getItem('listarecetas'));
   const navigate = useNavigate();
-  const location = useLocation()
-  const { product } = location.state || {}
- 
+  // const location = useLocation()
+  // const { product } = location.state || {}
+  const { idName } = useParams();
+  console.log(recetas)
+  const product = recetas.find( (rec) => parseInt(rec.idName) === parseInt(idName));
+  
+
   const handleEliminarReceta = () => {
-    const nuevasRecetas = recetas.filter(item => item.tituloConf !== product.tituloConf)
+    const nuevasRecetas = recetas.filter( (item) => parseInt(item.idName) !== parseInt(product.idName))
     localStorage.setItem('listarecetas', JSON.stringify(nuevasRecetas));
+    setRecetas(nuevasRecetas)
     navigate("/listaRecetas")
   }
   

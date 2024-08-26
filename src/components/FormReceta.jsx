@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect, useContext} from "react";
 import { AutoComplete } from "primereact/autocomplete";
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
@@ -6,11 +6,11 @@ import { Dropdown } from 'primereact/dropdown';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { useNavigate } from 'react-router-dom';
+import { ModeContext } from "../contexts/MainContext";
 
 export default function FormReceta() {
-    const recetas = JSON.parse(localStorage.getItem('listarecetas')) || [];
-    console.log(`Soy el receta que viene del contexto en FormRecetaa `)
-    console.log(recetas)
+    // const recetas = JSON.parse(localStorage.getItem('listarecetas')) || [];
+    const { recetas, setRecetas} = useContext(ModeContext);
     const navigate = useNavigate();
     const [titulo, setTitulo] = useState("");
     const [tituloConf, setTituloConf] = useState("");
@@ -31,6 +31,18 @@ export default function FormReceta() {
     const [AdvertenciaReceta, setAdvertenciaReceta] = useState(false);
     const [AdvertenciaTitulo, setAdvertenciaTitulo] = useState(false);
     const [receta, setReceta] = useState([]);
+
+    const crearIdName = () => {
+        const recetasString = localStorage.getItem('listarecetas')
+        const listaIdName = recetasString ? JSON.parse(recetasString) : []
+        let idName = ''
+        if (listaIdName.length == 0) {
+          idName = 0
+        } else {
+          idName = parseInt(listaIdName.length)
+        }
+        return idName
+      }
 
     useEffect(() => {
 
@@ -61,8 +73,10 @@ export default function FormReceta() {
     const handleConfirmarReceta = () => {
         if (receta.length > 0) {
             setAdvertenciaReceta(false);
-            const nuevasRecetas = [...recetas, { tituloConf, receta }];
+            const idName = crearIdName()
+            const nuevasRecetas = [...recetas, { idName, tituloConf, receta }];
             localStorage.setItem('listarecetas', JSON.stringify(nuevasRecetas));
+            setRecetas(nuevasRecetas)
             setReceta([]);
             navigate("/listaRecetas");
         } else {

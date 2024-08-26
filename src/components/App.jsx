@@ -18,7 +18,7 @@ function App() {
         <Route path="/home" element={<Protected> <Home/> </Protected>} />
         <Route path="/nuevaReceta" element={<Protected><NuevaReceta/></Protected>} />  
         <Route path="/listaRecetas" element={<Protected><ListaRecetas/></Protected>} />
-        <Route path="/receta" element={<Receta/>} />
+        <Route path="/receta/:idName" element={<Protected><Receta/></Protected>}/>
       </Routes>
     </BrowserRouter>
 

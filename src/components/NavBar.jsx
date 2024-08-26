@@ -22,6 +22,20 @@ export default function NavBar() {
             }
         },
         {
+            label: 'Lista Recetas',
+            icon: 'pi pi-list',
+            command: () => {
+                navigate("/listaRecetas")
+            }
+        },
+        {
+            label: 'Nueva Receta',
+            icon: 'pi pi-plus-circle ',
+            command: () => {
+                navigate("/nuevaReceta")
+            }
+        },
+        {
             label: 'Contacto',
             icon: 'pi pi-envelope'
         },
