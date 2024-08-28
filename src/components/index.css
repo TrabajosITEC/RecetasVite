@@ -1,27 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 
 :root{
     --font-titulos: 'Be Vietnam Pro';
+    --font-botones: 'Dancing Script';
     }
-    
-
-@keyframes clippath {
-    0%,to {
-        clip-path: inset(0 0 98% 0)
-    }
-
-    25% {
-        clip-path: inset(0 98% 0 0)
-    }
-
-    50% {
-        clip-path: inset(98% 0 0 0)
-    }
-
-    75% {
-        clip-path: inset(0 0 0 98%)
-    }
-}
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-titulos);
@@ -36,10 +19,12 @@ h1, h2, h3, h4, h5, h6 {
     width: 21rem;
     margin-left: 3rem;
     margin-right: 3rem;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.box:after,.box:before {
+.box:after, .box:before {
     content: "";
     position: absolute;
     top: -2px;
@@ -51,15 +36,72 @@ h1, h2, h3, h4, h5, h6 {
     animation: clippath 3s linear infinite;
     border-radius: 10px;
     opacity: 0;
-    z-index: -1
+    z-index: -1;
 }
 
 .box:after {
-    animation: clippath 3s linear -1.5s infinite
+    animation: clippath 3s linear -1.5s infinite;
 }
 
 .box:hover:after, .box:hover:before {
-    opacity: 1
+    opacity: 1;
+}
+
+.boton-ajustable {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    position: relative !important;
+    border: none !important;
+    height: 20rem !important; 
+    width: 20rem !important;
+    border-radius: 50% !important;
+    background-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 5px white, 
+                0 0 0 7px var(--primary-color) !important;
+}
+
+.tituloBotones {
+    font-family: var(--font-botones);
+    font-size: 45px;
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 90%;
+    max-height: 90%;
+    margin: 0;
+    padding: 10px;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .box {
+        height: 16rem;
+        width: 16rem;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+    }
+
+    .boton-ajustable {
+        height: 15rem !important;
+        width: 15rem !important;
+        box-shadow: 0 0 0 3px white,
+                    0 0 0 5px var(--primary-color) !important;
+    }
+
+    .tituloBotones {
+        font-size: 30px;
+    }
+}
+
+@keyframes clippath {
+    0%, 100% { clip-path: inset(0 0 98% 0); }
+    25% { clip-path: inset(0 98% 0 0); }
+    50% { clip-path: inset(98% 0 0 0); }
+    75% { clip-path: inset(0 0 0 98%); }
 }
 
 body {

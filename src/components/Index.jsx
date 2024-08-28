@@ -14,40 +14,33 @@ function Home() {
 
   return (
       <MainLayOut>
-      <h1 className="flex justify-content-center" style={{ marginBottom:'0px'}}>Recetario React</h1>
-      <div className="flex justify-content-center" >
-        <div className='box flex align-items-center justify-content-center'>
+      <h1 className="flex justify-content-center" style={{ marginBottom:'25px'}}>Recetario React</h1>
+      <div className="flex justify-content-center">
+
+        <div className='box'>
           <Button 
-            className='p-4 fadein animation-duration-500'
-            rounded 
+            className='boton-ajustable fadein animation-duration-500'
             severity="secondary" 
             aria-label="Bookmark" 
-            label='Lista de Recetas'
-            onClick={handleListaRecetas} 
-            style={{
-              height: '20rem', 
-              width: '20rem', 
-              borderRadius: '50%',
-            }}
-            />
+            onClick={handleListaRecetas}
+          >
+            <p className='tituloBotones'>Lista de Recetas</p>
+          </Button>
         </div>
 
-        <div className='box flex align-items-center justify-content-center'>
+
+        <div className='box'>
           <Button 
-            className='p-4 fadein animation-duration-500'
-            rounded 
+            className='boton-ajustable fadein animation-duration-500'
             severity="secondary" 
             aria-label="Bookmark" 
-            label='Nueva Receta' 
             onClick={handleReceta}
-            style={{
-              height: '20rem', 
-              width: '20rem', 
-              borderRadius: '50%',
-            }}
-            />
+          >
+            <p className='tituloBotones'>Nueva Receta</p>
+          </Button>
         </div>
-       </div>
+
+      </div>
       </MainLayOut>
   )
 }
