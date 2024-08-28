@@ -33,17 +33,21 @@ export default function FormReceta() {
     const [receta, setReceta] = useState([]);
 
     const crearIdName = () => {
-        const recetasString = localStorage.getItem('listarecetas')
-        const listaIdName = recetasString ? JSON.parse(recetasString) : []
-        let idName = ''
-        if (listaIdName.length == 0) {
-          idName = 0
+        const recetasString = localStorage.getItem('listarecetas');
+        console.log("recetasString:", recetasString); 
+    
+        const listaIdName = recetasString ? JSON.parse(recetasString) : [];
+        console.log("listaIdName:", listaIdName);  
+    
+        if (listaIdName.length === 0) {
+            return 0;
         } else {
-          idName = parseInt(listaIdName.length)
+            const maxIdname = Math.max(...listaIdName.map(obj => Number(obj.idName)));
+            console.log("maxIdname:", maxIdname);  
+            return maxIdname + 1;
         }
-        return idName
-      }
-
+    }
+    
     useEffect(() => {
 
     }, [receta]);
